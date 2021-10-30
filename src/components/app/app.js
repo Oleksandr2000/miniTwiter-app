@@ -14,9 +14,9 @@ class App extends Component {
         super(props);
         this.state = {
             data: [
-                {name: 'Alex', salary: 900, increase: false, rise: true, id: 1},
-                {name: 'Oleksandr', salary: 1900, increase: false, rise: false, id: 2},
-                {name: 'Ivan', salary: 4400, increase: false, rise: false, id: 3},
+                {name: 'Hello world', increase: false, rise: true, id: 1},
+                {name: 'I`m complete this app',  increase: false, rise: false, id: 2},
+                {name: 'I need break',  increase: false, rise: false, id: 3},
             ],
             term: '',
             filter: ''
@@ -24,7 +24,7 @@ class App extends Component {
         this.maxId = 12;
     }
 
-    DeleteItem = (id) =>{
+    deleteItem = (id) =>{
         this.setState(({data}) => {
             return{
                 data: data.filter(item=> item.id !== id)
@@ -32,10 +32,9 @@ class App extends Component {
         })
     }
 
-    addItem = (name, salary) => {
+    addItem = (name) => {
         const newItem = {
             name, 
-            salary,
             increase: false,
             rise: false,
             id: this.maxId++
@@ -73,8 +72,8 @@ class App extends Component {
         switch(filter){
             case'rise': 
                 return items.filter(item => item.rise);
-            case 'moreThen1000':
-                return items.filter(item => item.salary > 1000);
+            case 'increase':
+                return items.filter(item => item.increase);
             default: 
                 return items
         }
